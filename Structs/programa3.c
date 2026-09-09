@@ -16,6 +16,7 @@ int main(){
     printf("Nome: %s", pes.nome);
 
     pes.idade = 40;
+    //tem que colocar o printf depois de alterar a variavvel, pois se tiver mais  de uma ele vai sobrescrever
 
     printf("Idade: %d\n", pes.idade);
 

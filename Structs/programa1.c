@@ -9,15 +9,19 @@ struct st_aluno
     char curso[50];
     int ano_nascimento;
 }aluno1;
+//Da pra usar como vetor também e da pra criar uma outra struct so com a variavel aluno que tem todas as outras de aluno dentro
 
 int main(){
 
     printf("Informe a matricula do aluno: ");
     fgets(aluno1.matricula, 10, stdin);
+
     printf("Informe o nome do aluno: ");
     fgets(aluno1.nome, 100, stdin);
+
     printf("Informe o curso do aluno: ");
     fgets(aluno1.curso, 50, stdin);
+
     printf("Informe o ano de nascimento do aluno: ");
     scanf("%d", &aluno1.ano_nascimento);
 

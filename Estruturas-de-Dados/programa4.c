@@ -122,6 +122,43 @@ void inserir_Fim(no *le){
     }
 }
 
+void busca_nome(no *le){
+    char n[100];
+    no *aux;
+    aux = (no*)malloc(sizeof(no));
+    if (aux == NULL)
+    {
+        printf("Erro de memoria");
+        exit(1);
+    }
+    
+    if (vazia(le))
+    {
+        exibe(le);        
+    }
+
+    printf("Digite o nome a ser encontrado: \n");
+    fgets(n, 100, stdin);
+    
+    aux = le->prox;
+
+    while (aux != NULL)
+    {
+        if (strcmp(n, aux->nome) == 0)
+        {
+            printf("\n\n====================\n");
+            printf("Nome: %s", aux->nome);
+            printf("Idade: %d\n", aux->idade);
+            printf("CPF: %s", aux->cpf);
+            return;
+        }else{
+            aux = aux->prox;
+        }
+        
+    }
+    printf("Nome não cadatrado!!!");
+}
+
 void opcao(no *le, int op){
     switch (op)
     {
@@ -136,6 +173,9 @@ void opcao(no *le, int op){
         break;
     case 4:
         libera(le);
+        break;
+        case 5:
+        busca_nome(le);
         break;
     case -1:
         printf("Saindo...");
@@ -164,12 +204,13 @@ int main(){
     start(ini);
 
     while (op != -1)
-    {
+    {   
         printf("\n=====Escolha uma opcao=====\n");
         printf("1 - Exibir Lista\n");
         printf("2 - Inserir no Inicio\n");
         printf("3 - Inserir no Final\n");
         printf("4 - Libera a Lista\n");
+        printf("5 - Buscar por nome\n");
         printf("-1 - Sair\n");
         scanf("%d", &op);
         getchar();

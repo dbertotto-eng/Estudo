@@ -7,7 +7,7 @@
 struct lista{
     char nome[100];
     int idade;
-    char cpf[14];
+    char cpf[11];
     struct lista *prox;
 };
 
@@ -33,11 +33,13 @@ void libera(no *le){
     {
         no *proxNo, *atual;
         atual = le->prox;
-        while (atual->prox != NULL)
-        {
-            proxNo = atual->prox;
-            free(atual);
+        while (atual != NULL)
+        {   
+            proxNo = atual->prox;//proxNo++
+            free(atual);//libera o atual
+            atual = proxNo;//atualiza o atual pro prox
         }
+        le->prox = NULL;//Atualiza o prox da cabeça pra NULL;
     }
 }
 
@@ -52,9 +54,9 @@ void exibe(no *le){
     while (temp != NULL)
     {   
         printf("\n\n====================\n");
-        printf("Nome: %s\n", temp->nome);
+        printf("Nome: %s", temp->nome);
         printf("Idade: %d\n", temp->idade);
-        printf("CPF: %s\n", temp->cpf);
+        printf("CPF: %s", temp->cpf);
         temp = temp->prox;
     }
 }
@@ -68,12 +70,14 @@ void inserir_inicio(no *le){
         printf("Erro de memoria");
         exit(1);
     }
-    printf("Informe o nome a ser adicionado:");
+    printf("Informe o nome a ser adicionado: \n");
     fgets(novo->nome, 100, stdin);
-    printf("Insira a idade da pessoa: ");
+
+    printf("Insira a idade da pessoa: \n");
     scanf("%d", &novo->idade);
     getchar();
-    printf("Informe o CPF:");
+
+    printf("Informe o CPF: \n");
     fgets(novo->cpf, 14, stdin);
 
     no *oldHead = le->prox;
@@ -97,6 +101,7 @@ void inserir_Fim(no *le){
     printf("Insira a idade da pessoa: \n");
     scanf("%d", &novo->idade);
     getchar();
+
     printf("Informe o CPF: \n");
     fgets(novo->cpf, 14, stdin);
 
@@ -146,7 +151,7 @@ void opcao(no *le, int op){
 
 int main(){
 
-    int op;
+    int op = 0;
     no *ini;
 
     ini = (no*)malloc(sizeof(no));

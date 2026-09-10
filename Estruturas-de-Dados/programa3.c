@@ -32,7 +32,7 @@ void libera(no *le){
     if(!vazia(le)){
         no *proxNo, *atual;
         atual = le->prox;
-        while (atual->prox != NULL)
+        while (atual != NULL)
         {
             proxNo = atual->prox;
             free(atual);

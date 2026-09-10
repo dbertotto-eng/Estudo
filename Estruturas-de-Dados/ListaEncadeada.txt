@@ -1,0 +1,22 @@
+Uma lista encadeada tem uma struct com um conteudo que  aponta pro proximo conteúdo(endereço de quem vem depois)
+um ponteiro do tipo da struct é só o endereço do objeto
+se c é uma celula então c.conteudo é o conteudo da celula e c.prox e o endereço da proxima celula
+se p é um endereço de uma celula então p->celula é  conteudo da celula e p->prox é o endereço da proxima celula
+ 
+lista com cabeça = se ini é o endereço da primeira celula. Então int->prox = NULL sse a lista estiver vazia
+
+para criar uma lista vazia
+
+celula *ini;
+
+ini = (celula*)malloc(sizeof(celula));
+
+ini->prox = NULL;
+==============================================================================================================================
+
+Lista sem Cabeça = Neste caso a lista esta vazia se o endereço da primeira celula é = NULL
+
+Para criar:
+
+celula *ini;
+ini = NULL;

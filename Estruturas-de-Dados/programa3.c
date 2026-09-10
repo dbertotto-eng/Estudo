@@ -32,7 +32,7 @@ void libera(no *le){
     if(!vazia(le)){
         no *proxNo, *atual;
         atual = le->prox;
-        while (atual != NULL)
+        while (atual->prox != NULL)
         {
             proxNo = atual->prox;
             free(atual);
@@ -49,7 +49,7 @@ void exibe(no *le){
     }
     no *temp;
     temp = le->prox;
-    while (temp != NULL)
+    while (temp->prox != NULL)
     {
         printf("%d", temp->valor);
         temp = temp->prox;//seria o temp++
@@ -120,6 +120,7 @@ void opcao(no *le, int op){
         break;
     case 0:
         printf("Saindo...");
+        break;
     
     default:
         printf("Valor invalido");

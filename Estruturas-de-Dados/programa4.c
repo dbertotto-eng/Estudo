@@ -159,6 +159,56 @@ void busca_nome(no *le){
     printf("Nome não cadatrado!!!");
 }
 
+void busca_primeiro_nome(no *le){
+    char primeiro1[50];
+    char primeiro2[50];
+    char n[50];
+    int cont = 0;
+    no *aux;
+
+    if (vazia(le))
+    {
+        exibe(le);
+    }
+    
+    aux = (no*)malloc(sizeof(no));
+
+    if (aux == NULL)
+    {
+        printf("Problema de memoria");
+        exit(1);
+    }
+
+    printf("Digite o primeiro nome: \n");
+    fgets(n, 50, stdin);
+
+    n[strcspn(n, "\n")] = '\0';
+
+    sscanf(n, "%s", primeiro1);
+    
+    aux = le->prox;
+
+    while (aux != NULL)
+    {   cont++;
+        aux = aux->prox;
+    }
+    aux = le->prox;
+
+    for (int i = 0; i < cont; i++)
+    {
+        sscanf(aux->nome, "%s", primeiro2);
+        if (strcmp(primeiro1,primeiro2) == 0)
+        {
+            printf("\n\n====================\n");
+            printf("Nome: %s\n", aux->nome);
+            printf("Idade: %d\n", aux->idade);
+            printf("CPF: %s\n", aux->cpf);
+        }
+        
+    }
+    
+}
+
 void opcao(no *le, int op){
     switch (op)
     {
@@ -174,9 +224,11 @@ void opcao(no *le, int op){
     case 4:
         libera(le);
         break;
-        case 5:
+    case 5:
         busca_nome(le);
         break;
+    case 6:
+        busca_primeiro_nome(le);
     case -1:
         printf("Saindo...");
         break;
@@ -211,6 +263,7 @@ int main(){
         printf("3 - Inserir no Final\n");
         printf("4 - Libera a Lista\n");
         printf("5 - Buscar por nome\n");
+        printf("6 - Busca Primeiro Nome\n");
         printf("-1 - Sair\n");
         scanf("%d", &op);
         getchar();
